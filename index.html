@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Insult Gacha</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div style="text-align:center; margin-top: 50px;">
+    <audio id="audioPlayer" src="Quavo.mp3"></audio>
+    <button onclick="togglePlay()" id="playPauseBtn" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">
+      ⏯
+    </button>
+  </div>
+
+  <button id="themeToggle">light/dark</button>
+  <div class="sparkle-field">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+  <div class="sparkle-background">
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+  </div>
+  <style>
+    body.light-mode {
+      background-color: #fff;
+      color: #f4c2c2;
+    }
+
+    body.dark-mode {
+      background-color: #000;
+      color: #ffc1cc;
+    }
+    #insult {
+    display: block;
+    font-size: 20px;
+    margin-top: 20px;
+    }
+      
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .sparkle-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .sparkle-background .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: pink;
+      border-radius: 50%;
+      opacity: 0.5;
+      animation: float-sparkle 5s infinite ease-in-out;
+    }
+
+    @keyframes float-sparkle {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.4;
+      }
+      50% {
+        opacity: 0.8;
+        transform: translateY(-50px) scale(1.2);
+      }
+      100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.4;
+      }
+    }
+    .sparkle-field {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .dot {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #ffc0f3;
+      border-radius: 50%;
+      opacity: 0;
+      animation: pulse 4s infinite ease-in-out;
+    }
+
+    .dot:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+    .dot:nth-child(2) { top: 50%; left: 30%; animation-delay: 1s; }
+    .dot:nth-child(3) { top: 70%; left: 80%; animation-delay: 2s; }
+    .dot:nth-child(4) { top: 40%; left: 60%; animation-delay: 3s; }
+    .dot:nth-child(5) { top: 85%; left: 25%; animation-delay: 4s; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0; transform: scale(0.8); }
+      50% { opacity: 0.6; transform: scale(1.3); }
+    }
+    /* Optional: randomize positions */
+    .sparkle-background .sparkle:nth-child(1) {
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .sparkle-background .sparkle:nth-child(2) {
+      top: 40%;
+      left: 70%;
+      animation-delay: 1s;
+    }
+
+    .sparkle-background .sparkle:nth-child(3) {
+      top: 60%;
+      left: 30%;
+      animation-delay: 2s;
+    }
+
+    .sparkle-background .sparkle:nth-child(4) {
+      top: 80%;
+      left: 50%;
+      animation-delay: 3s;
+    }
+
+    .sparkle-background .sparkle:nth-child(5) {
+      top: 30%;
+      left: 85%;
+      animation-delay: 4s;
+    }
+    button {
+      background-color: #ff69b4;
+      border: none;
+      color: white;
+      padding: 12px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 6px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff85c1;
+    }
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .sparkle {
+      width: 6px;
+      height: 6px;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      animation: sparkle 2s infinite ease-in-out;
+      opacity: 0.8;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+    h1 {
+      font-family: 'Bubblegum Sans', cursive;
+      font-size: 40px;
+      color: #fc8eac;
+    }
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #ff69b4;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.9;
+      animation: sparkle-fade 1s ease-out;
+      z-index: 9999;
+    }
+
+    @keyframes sparkle-fade {
+      from { opacity: 0.9; }
+      to { opacity: 0; transform: scale(0.5); }
+    }
+    #insult {
+      min-height: 40px; /* or however tall your longest insult gets */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .gacha-button {
+      font-family: 'Bubblegum Sans', cursive;
+      font-size: 18px;
+      border-radius: 12px;
+      padding: 10px 16px;
+      cursor: pointer;
+      background-color: hotpink;
+      color: white;
+      border: none;
+      margin: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .gacha-button:hover {
+      box-shadow: 0 0 10px #ffb3ec;
+      transform: scale(1.05);
+    }
+  </style>
+  <div class="container">
+    <h1>insultame gacha</h1>
+    <p id="insult">lista cabrona?</p>
+
+    <div class="buttons">
+      <button class="gacha-button" onclick="getInsult('cute')">coqueta</button>
+      <button class="gacha-button" onclick="getInsult('reg')">chula</button>
+      <button class="gacha-button" onclick="getInsult('mal')">chingona</button>
+    </div>
+  </div>
+  
+<script>
+  const insults = {
+    reg: [],
+    mal: [],
+    cute: []
+  };
+
+  fetch('insultos.txt')
+    .then(response => response.text())
+    .then(data => {
+      const lines = data.split('\n');
+      lines.forEach(line => {
+        const [category, ...rest] = line.split(':');
+        if (insults[category.trim()]) {
+          insults[category.trim()].push(rest.join(':').trim());
+        }
+      });
+    });
+
+  function getInsult(category) {
+    const arr = insults[category];
+    if (arr && arr.length > 0) {
+      const index = Math.floor(Math.random() * arr.length);
+      document.getElementById('insult').innerText = arr[index];
+    } else {
+      document.getElementById('insult').innerText = 'no hay insultos aquí...';
+    }
+  }
+  function sparkleBurst(x, y) {
+    for (let i = 0; i < 10; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = `${x}px`;
+      sparkle.style.top = `${y}px`;
+
+      // Random movement
+      const angle = Math.random() * 2 * Math.PI;
+      const radius = Math.random() * 50;
+      const dx = Math.cos(angle) * radius;
+      const dy = Math.sin(angle) * radius;
+
+      sparkle.style.transform = `translate(${dx}px, ${dy}px)`;
+      document.body.appendChild(sparkle);
+
+      // Fade out & remove
+      setTimeout(() => {
+        sparkle.remove();
+      }, 1000);
+    }
+  }
+  function getInsult(category) {
+    const arr = insults[category];
+    if (arr && arr.length > 0) {
+      const i = Math.floor(Math.random() * arr.length);
+      document.getElementById('insult').innerText = arr[i];
+    }
+    // Sparkle effect at button click
+    document.addEventListener('click', function(e) {
+      sparkleBurst(e.clientX, e.clientY);
+    }, { once: true });
+  }
+
+  const toggleBtn = document.getElementById("themeToggle");
+
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+    document.body.classList.toggle("dark-mode");
+
+    // Optional: store preference in localStorage
+    const currentTheme = document.body.classList.contains("dark-mode") ? "dark" : "light";
+    localStorage.setItem("theme", currentTheme);
+  });
+
+  // On load: apply saved theme
+  window.onload = () => {
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    document.body.classList.add(savedTheme + "-mode");
+  };
+ 
+  // Call this after generating a new phrase
+  updateHistory(selectedPhrase);
+
+  const bgm = document.getElementById('audioPlayer');
+
+  function togglePlay() {
+    if (audioPlayer.paused) {
+      audioPlayer.play();
+    } else {
+      audioPlayer.pause();
+    }
+  }
+
+  const insultElement = document.getElementById("insult");
+  console.log("Applying fade-in to", insultElement.textContent);
+  insultElement.classList.remove("fade-in"); // Reset if it’s already applied
+  void insultElement.offsetWidth; // Trigger reflow
+  insultElement.classList.add("fade-in");
+</script>
+</body>
+</html>
