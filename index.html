@@ -105,7 +105,10 @@
       z-index: 0;
       overflow: hidden;
     }
-
+    .button-wrap {
+      position: relative;
+      display: inline-block;
+    }
     .dot {
       position: absolute;
       width: 10px;
@@ -252,10 +255,13 @@
     <h1>gacha gacha</h1>
     <p id="insult">listo ?</p>
 
+    <div class="button-wrap">
     <div class="buttons">
       <button class="gacha-button" onclick="getInsult('cute')">coqueta</button>
       <button class="gacha-button" onclick="getInsult('reg')">chula</button>
       <button class="gacha-button" onclick="getInsult('mal')">chingona</button>
+    <div class="dot"></div>
+    </div>
     </div>
   </div>
   
