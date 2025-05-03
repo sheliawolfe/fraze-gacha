@@ -275,10 +275,15 @@ const usedIndexes = {
         }
       });
     });
-  function getInsult(category) {
-  const arr = insults[category];
-  const used = usedIndexes[category];
-
+function getInsult(category) {
+    const arr = insults[category];
+    if (arr && arr.length > 0) {
+      const index = Math.floor(Math.random() * arr.length);
+      document.getElementById('insult').innerText = arr[index];
+    } else {
+      document.getElementById('insult').innerText = 'no hay amor aquí...';
+    }
+  }
   if (arr && arr.length > 0) {
     // If all insults have been used, reset
     if (used.size === arr.length) {
@@ -294,16 +299,13 @@ const usedIndexes = {
     const insult = arr[index];
     document.getElementById('insult').innerText = insult;
 
-    // Optional fade-in animation
-    const insultElement = document.getElementById('insult');
-    insultElement.classList.remove("fade-in");
-    void insultElement.offsetWidth;
-    insultElement.classList.add("fade-in");
-
-  } else {
-    document.getElementById('insult').innerText = 'no hay amor aquí...';
-  }
-}
+      const insultElement = document.getElementById("insult");
+   console.log("Applying fade-in to", insultElement.textContent);
+   insultElement.classList.remove("fade-in"); // 
+   insultElement.classList.remove("fade-in"); // Reset if it’s already applied
+   void insultElement.offsetWidth; // Trigger reflow
+   insultElement.classList.add("fade-in");
+    
   function sparkleBurst(x, y) {
     for (let i = 0; i < 10; i++) {
       const sparkle = document.createElement('div');
