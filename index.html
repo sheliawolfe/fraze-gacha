@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Insult Gacha</title>
+  <title>Gacha Gacha</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap">
 </head>
@@ -266,7 +266,7 @@
     cute: []
   };
 
-  fetch('insultos.txt')
+  fetch('library.txt')
     .then(response => response.text())
     .then(data => {
       const lines = data.split('\n');
@@ -284,7 +284,7 @@
       const index = Math.floor(Math.random() * arr.length);
       document.getElementById('insult').innerText = arr[index];
     } else {
-      document.getElementById('insult').innerText = 'no hay insultos aquí...';
+      document.getElementById('insult').innerText = 'no hay nada aquí...';
     }
   }
   function sparkleBurst(x, y) {
