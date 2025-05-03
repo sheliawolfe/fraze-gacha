@@ -351,9 +351,22 @@
     }
   }
 
+  const gachaButtons = document.querySelectorAll('.gacha-button');
+  const dots = document.querySelectorAll('.dot');
+
+  gachaButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    dots.forEach(dot => {
+      dot.classList.remove('pulse'); // abel
+      void dot.offsetWidth; // re-trigger
+      dot.classList.add('pulse');
+    });
+  });
+});
+
   const insultElement = document.getElementById("insult");
   console.log("Applying fade-in to", insultElement.textContent);
-  insultElement.classList.remove("fade-in"); // Reset if it’s already applied
+  insultElement.classList.remove("fade-in"); // 
   void insultElement.offsetWidth; // Trigger reflow
   insultElement.classList.add("fade-in");
 </script>
