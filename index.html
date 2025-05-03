@@ -15,7 +15,7 @@
     </button>
   </div>
 
-  <button id="themeToggle">light/dark</button>
+  <button id="themeToggle">luz/noir</button>
   <div class="sparkle-field">
     <div class="dot"></div>
     <div class="dot"></div>
@@ -126,7 +126,6 @@
       0%, 100% { opacity: 0; transform: scale(0.8); }
       50% { opacity: 0.6; transform: scale(1.3); }
     }
-    /* Optional: randomize positions */
     .sparkle-background .sparkle:nth-child(1) {
       top: 20%;
       left: 10%;
@@ -198,7 +197,7 @@
       50% { opacity: 1; transform: scale(1.5); }
     }
     h1 {
-      font-family: 'Bubblegum Sans', cursive;
+      font-family: 'Bubblegum Sans', sans-serif;
       font-size: 40px;
       color: #fc8eac;
     }
@@ -219,13 +218,14 @@
       to { opacity: 0; transform: scale(0.5); }
     }
     #insult {
-      min-height: 40px; /* or however tall your longest insult gets */
+      min-height: 40px; 
       display: flex;
       align-items: center;
       justify-content: center;
+      font-family: Menlo, sans-serif;
     }
     .gacha-button {
-      font-family: 'Bubblegum Sans', cursive;
+      font-family: 'Bubblegum Sans', sans-serif;
       font-size: 18px;
       border-radius: 12px;
       padding: 10px 16px;
@@ -240,6 +240,12 @@
     .gacha-button:hover {
       box-shadow: 0 0 10px #ffb3ec;
       transform: scale(1.05);
+    }
+
+    #themeToggle {
+      font-family: Menlo, sans-serif;
+      color: white;
+      font-size: 16px;
     }
   </style>
   <div class="container">
