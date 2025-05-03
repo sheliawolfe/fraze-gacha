@@ -151,13 +151,11 @@
       left: 30%;
       animation-delay: 2s;
     }
-
     .sparkle-background .sparkle:nth-child(4) {
       top: 80%;
       left: 50%;
       animation-delay: 3s;
     }
-
     .sparkle-background .sparkle:nth-child(5) {
       top: 30%;
       left: 85%;
@@ -177,7 +175,6 @@
       cursor: pointer;
       transition: 0.3s ease;
     }
-
     button:hover {
       background-color: #ff85c1;
     }
@@ -199,7 +196,6 @@
       animation: sparkle 2s infinite ease-in-out;
       opacity: 0.8;
     }
-
     @keyframes sparkle {
       0%, 100% { opacity: 0.2; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.5); }
@@ -220,13 +216,12 @@
       animation: sparkle-fade 1s ease-out;
       z-index: 9999;
     }
-
     @keyframes sparkle-fade {
       from { opacity: 0.9; }
       to { opacity: 0; transform: scale(0.5); }
     }
     #insult {
-      min-height: 40px; /* or however tall your longest insult gets */
+      min-height: 40px; /* or however tall longest insult is */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -243,7 +238,6 @@
       margin: 8px;
       transition: all 0.3s ease;
     }
-
     .gacha-button:hover {
       box-shadow: 0 0 10px #ffb3ec;
       transform: scale(1.05);
@@ -252,7 +246,6 @@
   <div class="container">
     <h1>loveee gacha</h1>
     <p id="insult">listo pa amor?</p>
-
     <div class="buttons">
       <button class="gacha-button" onclick="getInsult('cute')">coqueta</button>
       <button class="gacha-button" onclick="getInsult('reg')">chama</button>
@@ -261,12 +254,16 @@
   </div>
   
 <script>
-  const insults = {
+const insults = {
     reg: [],
     mal: [],
     cute: []
   };
-
+const usedIndexes = {
+  reg: new Set(),
+  mal: new Set(),
+  cute: new Set()
+};
   fetch('library.txt')
     .then(response => response.text())
     .then(data => {
@@ -278,16 +275,35 @@
         }
       });
     });
-
   function getInsult(category) {
-    const arr = insults[category];
-    if (arr && arr.length > 0) {
-      const index = Math.floor(Math.random() * arr.length);
-      document.getElementById('insult').innerText = arr[index];
-    } else {
-      document.getElementById('insult').innerText = 'no hay insultos aquí...';
+  const arr = insults[category];
+  const used = usedIndexes[category];
+
+  if (arr && arr.length > 0) {
+    // If all insults have been used, reset
+    if (used.size === arr.length) {
+      used.clear();
     }
+
+    let index;
+    do {
+      index = Math.floor(Math.random() * arr.length);
+    } while (used.has(index));
+
+    used.add(index);
+    const insult = arr[index];
+    document.getElementById('insult').innerText = insult;
+
+    // Optional fade-in animation
+    const insultElement = document.getElementById('insult');
+    insultElement.classList.remove("fade-in");
+    void insultElement.offsetWidth;
+    insultElement.classList.add("fade-in");
+
+  } else {
+    document.getElementById('insult').innerText = 'no hay amor aquí...';
   }
+}
   function sparkleBurst(x, y) {
     for (let i = 0; i < 10; i++) {
       const sparkle = document.createElement('div');
@@ -300,7 +316,6 @@
       const radius = Math.random() * 50;
       const dx = Math.cos(angle) * radius;
       const dy = Math.sin(angle) * radius;
-
       sparkle.style.transform = `translate(${dx}px, ${dy}px)`;
       document.body.appendChild(sparkle);
 
@@ -310,40 +325,25 @@
       }, 1000);
     }
   }
-  function getInsult(category) {
-    const arr = insults[category];
-    if (arr && arr.length > 0) {
-      const i = Math.floor(Math.random() * arr.length);
-      document.getElementById('insult').innerText = arr[i];
-    }
     // Sparkle effect at button click
     document.addEventListener('click', function(e) {
       sparkleBurst(e.clientX, e.clientY);
     }, { once: true });
   }
-
   const toggleBtn = document.getElementById("themeToggle");
-
   toggleBtn.addEventListener("click", () => {
     document.body.classList.toggle("light-mode");
     document.body.classList.toggle("dark-mode");
-
     // Optional: store preference in localStorage
     const currentTheme = document.body.classList.contains("dark-mode") ? "dark" : "light";
     localStorage.setItem("theme", currentTheme);
   });
-
   // On load: apply saved theme
   window.onload = () => {
     const savedTheme = localStorage.getItem("theme") || "dark";
     document.body.classList.add(savedTheme + "-mode");
   };
- 
-  // Call this after generating a new phrase
-  updateHistory(selectedPhrase);
-
   const bgm = document.getElementById('audioPlayer');
-
   function togglePlay() {
     if (audioPlayer.paused) {
       audioPlayer.play();
@@ -351,12 +351,6 @@
       audioPlayer.pause();
     }
   }
-
-  const insultElement = document.getElementById("insult");
-  console.log("Applying fade-in to", insultElement.textContent);
-  insultElement.classList.remove("fade-in"); // Reset if it’s already applied
-  void insultElement.offsetWidth; // Trigger reflow
-  insultElement.classList.add("fade-in");
 </script>
 </body>
 </html>
