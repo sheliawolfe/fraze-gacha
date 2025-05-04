@@ -20,11 +20,13 @@ practice DOM manipulation, revisit HTML/CSS styling, gain deeper understanding o
 
 ## Future Edits
 - positioning of button dots based on screen size
-- solidify media hosting and check it's not breaking
-- check imported font not breaking
-- update list consistently, disable repeats
-- update button labels
+- solidify media hosting and check it's not breaking*
+- check imported font not breaking*
+- update list consistently
+- disable repeats
+- update button labels*
 - check functoining
+- --May the 4th: DO NOT TOUCH. UPDATE V1.♾️ All buttons funct
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
