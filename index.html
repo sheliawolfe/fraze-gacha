@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Love Gacha</title>
+  <title>TRASH Gacha</title>
   <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -45,13 +45,11 @@
       color: #f4c2c2;
       transition: all 0.3s ease;
     }
-
     body.dark-mode {
       background-color: #000;
       color: #ffc1cc;
       transition: all 0.3s ease;
     }
-    
     #insult {
     display: block;
     font-size: 18px;
@@ -59,17 +57,14 @@
     font-family: Menlo, sans-serif;
     color: pink;
     }
-    
     #themeToggle {
       font-size: 16px;
       color: white;
       font-family: Menlo, sans-serif;
-    }
-      
+    } 
     .fade-in {
       animation: fadeIn 1s ease-in-out;
     }
-
     @keyframes fadeIn {
       0% {
         opacity: 0;
@@ -308,7 +303,7 @@ function getInsult(category) {
       sparkle.className = 'sparkle';
       sparkle.style.left = `${x}px`;
       sparkle.style.top = `${y}px`;
-
+    }
       // Random movement
       const angle = Math.random() * 2 * Math.PI;
       const radius = Math.random() * 50;
@@ -322,7 +317,6 @@ function getInsult(category) {
         sparkle.remove();
       }, 1000);
     }
-  }
     // Sparkle effect at button click
     document.addEventListener('click', function(e) {
       sparkleBurst(e.clientX, e.clientY);
@@ -340,7 +334,7 @@ function getInsult(category) {
   // window.onload = () => {
     // const savedTheme = localStorage.getItem("theme") || "dark";
     // document.body.classList.add(savedTheme + "-mode");
-  //};
+
   const bgm = document.getElementById('audioPlayer');
   function togglePlay() {
     if (audioPlayer.paused) {
