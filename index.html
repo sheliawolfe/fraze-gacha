@@ -339,15 +339,15 @@ function getInsult(category) {
     document.body.classList.toggle("light-mode");
     document.body.classList.toggle("dark-mode");
     // Optional: store preference in localStorage
-    const currentTheme = document.body.classList.contains("dark-mode") ? "dark" : "light";
-    localStorage.setItem("theme", currentTheme);
+    // const currentTheme = document.body.classList.contains("dark-mode") ? "dark" : "light";
+    //localStorage.setItem("theme", currentTheme);
   });
   });
   // On load: apply saved theme
-  window.onload = () => {
-    const savedTheme = localStorage.getItem("theme") || "dark";
-    document.body.classList.add(savedTheme + "-mode");
-  };
+  // window.onload = () => {
+    // const savedTheme = localStorage.getItem("theme") || "dark";
+    // document.body.classList.add(savedTheme + "-mode");
+  //};
   const bgm = document.getElementById('audioPlayer');
   function togglePlay() {
     if (audioPlayer.paused) {
