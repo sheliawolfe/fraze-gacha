@@ -29,16 +29,28 @@
     <div class="sparkle"></div>
     <div class="sparkle"></div>
   </div>
+    <div class="container">
+    <h1>loveee gacha</h1>
+    <p id="insult">listo pa amor?</p>
+    <div class="buttons">
+      <button class="gacha-button" onclick="getInsult('cute')">coqueta</button>
+      <button class="gacha-button" onclick="getInsult('reg')">chama</button>
+      <button class="gacha-button" onclick="getInsult('mal')">chula</button>
+    </div>
+    </div>
   <style>
     body.light-mode {
       background-color: #fff;
       color: #f4c2c2;
+      transition: all 0.3s ease;
     }
 
     body.dark-mode {
       background-color: #000;
       color: #ffc1cc;
+      transition: all 0.3s ease;
     }
+    
     #insult {
     display: block;
     font-size: 18px;
@@ -201,7 +213,7 @@
       50% { opacity: 1; transform: scale(1.5); }
     }
     h1 {
-      font-family: 'Bubblegum Sans', cursive;
+      font-family: 'Bubblegum Sans', sans-serif;
       font-size: 40px;
       color: #fc8eac;
     }
@@ -227,7 +239,7 @@
       justify-content: center;
     }
     .gacha-button {
-      font-family: 'Bubblegum Sans', cursive;
+      font-family: 'Bubblegum Sans', sans-serif;
       font-size: 18px;
       border-radius: 12px;
       padding: 10px 16px;
@@ -242,17 +254,7 @@
       box-shadow: 0 0 10px #ffb3ec;
       transform: scale(1.05);
     }
-  </style>
-  <div class="container">
-    <h1>loveee gacha</h1>
-    <p id="insult">listo pa amor?</p>
-    <div class="buttons">
-      <button class="gacha-button" onclick="getInsult('cute')">coqueta</button>
-      <button class="gacha-button" onclick="getInsult('reg')">chama</button>
-      <button class="gacha-button" onclick="getInsult('mal')">chula</button>
-    </div>
-  </div>
-  
+  </style>  
 <script>
 const insults = {
     reg: [],
@@ -289,7 +291,6 @@ function getInsult(category) {
     if (used.size === arr.length) {
       used.clear();
     }
-
     let index;
     do {
       index = Math.floor(Math.random() * arr.length);
@@ -330,8 +331,9 @@ function getInsult(category) {
     // Sparkle effect at button click
     document.addEventListener('click', function(e) {
       sparkleBurst(e.clientX, e.clientY);
-    }, { once: true });
-  }
+    });
+    
+  document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = document.getElementById("themeToggle");
   toggleBtn.addEventListener("click", () => {
     document.body.classList.toggle("light-mode");
@@ -339,6 +341,7 @@ function getInsult(category) {
     // Optional: store preference in localStorage
     const currentTheme = document.body.classList.contains("dark-mode") ? "dark" : "light";
     localStorage.setItem("theme", currentTheme);
+  });
   });
   // On load: apply saved theme
   window.onload = () => {
