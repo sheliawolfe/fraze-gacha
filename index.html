@@ -251,11 +251,6 @@ const insults = {
     mal: [],
     cute: []
   };
-const usedIndexes = {
-  reg: new Set(),
-  mal: new Set(),
-  cute: new Set()
-};
   fetch('library.txt')
     .then(response => response.text())
     .then(data => {
@@ -276,26 +271,12 @@ function getInsult(category) {
       document.getElementById('insult').innerText = 'no hay amor aquí...';
     }
   }
-  if (arr && arr.length > 0) {
-    // If all insults have been used, reset
-    if (used.size === arr.length) {
-      used.clear();
-    }
-    let index;
-    do {
-      index = Math.floor(Math.random() * arr.length);
-    } while (used.has(index));
-
-    used.add(index);
-    const insult = arr[index];
-    document.getElementById('insult').innerText = insult;
-
-      const insultElement = document.getElementById("insult");
-   console.log("Applying fade-in to", insultElement.textContent);
-   insultElement.classList.remove("fade-in"); // 
-   insultElement.classList.remove("fade-in"); // Reset if it’s already applied
-   void insultElement.offsetWidth; // Trigger reflow
-   insultElement.classList.add("fade-in");
+    const insultElement = document.getElementById("insult");
+     console.log("Applying fade-in to", insultElement.textContent);
+     insultElement.classList.remove("fade-in"); // 
+     insultElement.classList.remove("fade-in"); // Reset if it’s already applied
+    void insultElement.offsetWidth; // Trigger reflow
+     insultElement.classList.add("fade-in");
     
   function sparkleBurst(x, y) {
     for (let i = 0; i < 10; i++) {
@@ -303,7 +284,6 @@ function getInsult(category) {
       sparkle.className = 'sparkle';
       sparkle.style.left = `${x}px`;
       sparkle.style.top = `${y}px`;
-    }
       // Random movement
       const angle = Math.random() * 2 * Math.PI;
       const radius = Math.random() * 50;
@@ -317,6 +297,7 @@ function getInsult(category) {
         sparkle.remove();
       }, 1000);
     }
+  }
     // Sparkle effect at button click
     document.addEventListener('click', function(e) {
       sparkleBurst(e.clientX, e.clientY);
@@ -343,7 +324,6 @@ function getInsult(category) {
       audioPlayer.pause();
     }
   }
-    console.log(themeToggle);
 </script>
 </body>
 </html>
