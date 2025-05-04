@@ -13,6 +13,7 @@
       ⏯
     </button>
   </div>
+  <body class="dark-mode">
 
   <button id="themeToggle">luz/noir</button>
   <div class="sparkle-field">
@@ -89,7 +90,6 @@
       overflow: hidden;
       z-index: 0;
     }
-
     .sparkle-background .sparkle {
       position: absolute;
       width: 6px;
@@ -99,7 +99,6 @@
       opacity: 0.5;
       animation: float-sparkle 5s infinite ease-in-out;
     }
-
     @keyframes float-sparkle {
       0% {
         transform: translateY(0) scale(1);
@@ -124,7 +123,6 @@
       z-index: 0;
       overflow: hidden;
     }
-
     .dot {
       position: absolute;
       width: 10px;
@@ -134,7 +132,6 @@
       opacity: 0;
       animation: pulse 4s infinite ease-in-out;
     }
-
     .dot:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
     .dot:nth-child(2) { top: 50%; left: 30%; animation-delay: 1s; }
     .dot:nth-child(3) { top: 70%; left: 80%; animation-delay: 2s; }
@@ -151,13 +148,11 @@
       left: 10%;
       animation-delay: 0s;
     }
-
     .sparkle-background .sparkle:nth-child(2) {
       top: 40%;
       left: 70%;
       animation-delay: 1s;
     }
-
     .sparkle-background .sparkle:nth-child(3) {
       top: 60%;
       left: 30%;
@@ -333,7 +328,6 @@ function getInsult(category) {
       sparkleBurst(e.clientX, e.clientY);
     });
     
-  document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = document.getElementById("themeToggle");
   toggleBtn.addEventListener("click", () => {
     document.body.classList.toggle("light-mode");
@@ -341,7 +335,6 @@ function getInsult(category) {
     // Optional: store preference in localStorage
     // const currentTheme = document.body.classList.contains("dark-mode") ? "dark" : "light";
     //localStorage.setItem("theme", currentTheme);
-  });
   });
   // On load: apply saved theme
   // window.onload = () => {
@@ -356,6 +349,7 @@ function getInsult(category) {
       audioPlayer.pause();
     }
   }
+    console.log(themeToggle);
 </script>
 </body>
 </html>
