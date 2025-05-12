@@ -15,6 +15,7 @@ cute: xfa
 cute: bobo
 cute: mensito
 cute: pendejo<3
+cute: bombón
 reg: me vuelves loca😵‍💫
 reg: bien loco 🤡
 reg: chamo 🇻🇪
@@ -29,6 +30,7 @@ reg: te calmas o te calmo🩴
 reg: prro🐶
 reg: ni vaina
 reg: la neta💀
+reg: niche
 reg: nmms
 reg: tranqui
 reg: deja es vaina
@@ -36,10 +38,13 @@ reg: no me jodas
 reg: q coño haces
 reg: epa👋🏼
 reg: wey
-reg: lokito
+reg: lokito🌀
 reg: parame bolas🇻🇪
-reg: ntp🤷🏽‍♀️
+reg: ntp💁🏽‍♀️
 reg: grosero😑
+reg: mnñ☀️
+reg: atr
+reg: npi🤷🏽‍♀️
 reg: fodongo👹
 mal: estoy arrecho😤
 mal: me arrechas🫦
@@ -53,10 +58,12 @@ mal: hijueputa🇨🇴
 mal: comemierda💩
 mal: cdm/cdlm/cdtm🖕🏼
 mal: mmds💩
-mal: alv
+mal: alv‼️
 mal: bicho🐛
 mal: cagar💩
 mal: malparido🤬
 mal: coger👉🏼👌🏼
 mal: mamar🙊
-
+mal: vpc🖕🏼
+mal: bolsa🥜
+mal: ptm
